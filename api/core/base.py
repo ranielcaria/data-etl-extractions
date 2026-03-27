@@ -16,4 +16,4 @@ class BaseExtractor(ABC):
         pass
     
     def run(self) -> list[dict]:
-        return self.transform(self.extract)
+        return self.transform(self.extract())
