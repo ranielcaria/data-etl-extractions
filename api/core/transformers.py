@@ -20,7 +20,10 @@ def parse_datetime(value: str) -> str | None:
     try:
         return datetime.strptime(value, '%d-%m-%Y - %H:%M:%S').strftime('%Y-%m-%d %H:%M:%S')
     except ValueError:
-        return print('Value Error')
+        try:
+            return datetime.strptime(value, '%d-%m-%Y - %H:%M').strftime('%Y-%m-%d %H:%M')
+        except ValueError:
+            return print('Value Error')
 
         
     
