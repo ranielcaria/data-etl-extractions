@@ -18,9 +18,10 @@ class AtendimentosUpa(BaseExtractor):
 
     def transform(self, df):
         registros = []
-        unidade = medico = equipe = motivo = desfecho = situacao = datahora = None
-        
+        unidade = medico = equipe = None
+
         for _, row in df.iterrows():
+            paciente = motivo = desfecho = situacao = datahora = None
             
             # Unidade
             if 'Unidade:' in str(row.iloc[3]).strip():
