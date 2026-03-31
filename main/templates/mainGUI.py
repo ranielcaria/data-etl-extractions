@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from api.core.input import input_file
 
 root = tk.Tk()
 root.title("MENU")
@@ -44,7 +45,7 @@ transfprod = ttk.Button(reportsframe, text='Transf Produtos')
 transfprod.grid(row=2, column=1, padx=5, pady=5, sticky='ew')
 
 # Input e Exit
-inputbtn = ttk.Button(root, text='Insert File', style="Accent.TButton")
+inputbtn = ttk.Button(root, command=input_file ,text='Insert File', style="Accent.TButton")
 inputbtn.grid(row=1, column=0, padx=(20, 10), pady=20, sticky='ew')
 
 exitbtn = ttk.Button(root, text='Exit', command=root.destroy)
