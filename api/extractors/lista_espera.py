@@ -56,17 +56,11 @@ class ListaDeEsperaPorEspecialidade(BaseExtractor):
                 'profissional': profissional,
                 'unidade': unidade
             })
-        
+
         return registros
-        
-if __name__ == "__main__":
-    extractor = ListaDeEsperaPorEspecialidade()
-    
-    dados_finais = extractor.run()
-    
-    print('--- header ---')
-    
-    for r in dados_finais[:5]:
-        print(r)
-    
-    print(f"--- fim, {len(dados_finais)} registros ---")
+
+
+def run_lista_espera(conn):
+    from api.core.pipeline import ETLPipeline
+    pipe = ETLPipeline(ListaDeEsperaPorEspecialidade, conn)
+    pipe.run()

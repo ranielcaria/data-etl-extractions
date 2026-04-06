@@ -63,14 +63,8 @@ class VacinasAplicadas(BaseExtractor):
 
         return registros
 
-if __name__ == "__main__":
-    extractor = VacinasAplicadas()
-    
-    dados_finais = extractor.run()
-    
-    print('--- header ---')
-    
-    for r in dados_finais[:5]:
-        print(r)
-    
-    print(f"--- fim, {len(dados_finais)} registros ---")
+
+def run_vacinas_aplicadas(conn):
+    from api.core.pipeline import ETLPipeline
+    pipe = ETLPipeline(VacinasAplicadas, conn)
+    pipe.run()

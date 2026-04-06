@@ -38,19 +38,13 @@ class TransferenciaProdutosExtractor(BaseExtractor):
                         'origem': origem,
                         'destino': destino
                     })
-                
+
             quantidade = None
 
         return registros
-    
-if __name__ == "__main__":
-    extractor = TransferenciaProdutosExtractor()
-    
-    dados_finais = extractor.run()
-    
-    print('--- header ---')
-    
-    for r in dados_finais[:5]:
-        print(r)
-    
-    print(f"--- fim, {len(dados_finais)} registros ---")
+
+
+def run_transferencia_produtos(conn):
+    from api.core.pipeline import ETLPipeline
+    pipe = ETLPipeline(TransferenciaProdutosExtractor, conn)
+    pipe.run()

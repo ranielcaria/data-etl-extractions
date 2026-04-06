@@ -66,17 +66,11 @@ class AtendimentosUpa(BaseExtractor):
                         'situacao': situacao
                     }
                 )
-            
+
         return registros
 
-if __name__ == "__main__":
-    extractor = AtendimentosUpa()
-    
-    dados_finais = extractor.run()
-    
-    print('--- header ---')
-    
-    for r in dados_finais[:5]:
-        print(r)
-    
-    print(f"--- fim, {len(dados_finais)} registros ---")
+
+def run_atendimentos_upa(conn):
+    from api.core.pipeline import ETLPipeline
+    pipe = ETLPipeline(AtendimentosUpa, conn)
+    pipe.run()

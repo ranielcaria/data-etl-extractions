@@ -37,17 +37,11 @@ class ProcedimentosPorProfissional(BaseExtractor):
                 'sexo': row.iloc[36],
                 'idade': row.iloc[38]
             })
-            
+
         return registros
-        
-if __name__ == "__main__":
-    extractor = ProcedimentosPorProfissional()
-    
-    dados_finais = extractor.run()
-    
-    print('--- header ---')
-    
-    for r in dados_finais[:5]:
-        print(r)
-    
-    print(f"--- fim, {len(dados_finais)} registros ---")
+
+
+def run_procedimentos_profissional(conn):
+    from api.core.pipeline import ETLPipeline
+    pipe = ETLPipeline(ProcedimentosPorProfissional, conn)
+    pipe.run()

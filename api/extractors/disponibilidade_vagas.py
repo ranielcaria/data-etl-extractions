@@ -67,17 +67,11 @@ class disponibilidade_vagas(BaseExtractor):
                     "disponiveis": disponiveis,
                     "data": data,
                 })
-        
+
         return registros
-        
-if __name__ == "__main__":
-    extractor = disponibilidade_vagas()
-    
-    dados_finais = extractor.run()
-    
-    print('--- header ---')
-    
-    for r in dados_finais[:5]:
-        print(r)
-    
-    print(f"--- fim, {len(dados_finais)} registros ---")
+
+
+def run_disponibilidade_vagas(conn):
+    from api.core.pipeline import ETLPipeline
+    pipe = ETLPipeline(disponibilidade_vagas, conn)
+    pipe.run()
