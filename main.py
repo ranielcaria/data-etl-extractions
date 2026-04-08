@@ -14,7 +14,6 @@ from api.extractors.transferencia_produtos import TransferenciaProdutosExtractor
 
 DB_CONFIG = "db_config.json"
 
-
 def run_etl(extractor_cls, name: str):
     try:
         with postgres_connection(DB_CONFIG) as conn:
@@ -23,7 +22,6 @@ def run_etl(extractor_cls, name: str):
         messagebox.showinfo("Sucesso", f"ETL concluído para {name}")
     except Exception:
         messagebox.showerror("Erro", traceback.format_exc())
-
 
 root = tk.Tk()
 root.title("MENU")
@@ -37,7 +35,6 @@ root.columnconfigure(index=0, weight=1)
 root.columnconfigure(index=1, weight=1)
 root.rowconfigure(index=0, weight=1)
 root.rowconfigure(index=1, weight=0)
-
 
 # Frame
 reportsframe = ttk.Labelframe(root, text='Relatórios', padding=(15, 15))
