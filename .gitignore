@@ -1,3 +1,3 @@
 # --- Excluded Folders For Data Privacy ---
-api/extractors/*
-api/loaders/*
+__pycache__
+db_config.json
