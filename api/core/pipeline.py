@@ -15,7 +15,7 @@ class ETLPipeline:
             move(extractor.file_path, \
                  extractor.file_path.replace("input", "archive")
                  .replace(".xls", \
-                f" [{datetime.now().strftime('%d-%m-%Y %H-%M')}].xls"))
+                f" [{datetime.now().strftime('%d-%m-%Y %H:%M:%S')}].xls"))
         except FileNotFoundError:
             msg.showerror('File Not Found')
         except Exception:
