@@ -15,7 +15,7 @@ def input_file():
     if not source_file or source_file == '':
         return
     
-    destination_folder = './input'
+    destination_folder = './api/input'
     filename = os.path.basename(source_file)
     destination_folder = os.path.join(destination_folder, filename)
 
