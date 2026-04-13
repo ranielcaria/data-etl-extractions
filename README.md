@@ -81,4 +81,4 @@ CREATE TABLE IF NOT EXISTS "pms"."example" (
 );
 ```
 
-Após a criação da tabela de exemplo, execute o arquivo ```main.example.py``` e pressione o botão escrito 'Exemplo'. Se um pop-up com rótulo de 'Sucesso' e com a mensagem 'ETL Concluído para example-extractor' aparecer, está tudo funcionando e você está pronto para começar a escrever seus próprios extratores de dados excel!  
+Após a criação da tabela de exemplo, execute o arquivo ```main.example.py``` e pressione o botão escrito 'Exemplo'. Se um pop-up com rótulo de 'Sucesso' e com a mensagem 'ETL Concluído para example-extractor' aparecer, está tudo funcionando e você está pronto para começar a escrever seus próprios extratores de dados excel!
