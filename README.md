@@ -63,7 +63,11 @@ pip install -e .
 Após, você está pronto para começar a utilizar! só execute o arquivo `` main.py `` e comece!
 
 Se tudo foi feito corretamente, este menu deve aparecer ao executar o arquivo ```main.example.py```:
-![menu-screenshow](menu-example-screen.png)
+
+<p align="center">
+  <img src="menu-example-screen.png" alt="menu-screenshot"><br>
+  <em>Interface principal do Menu</em>
+</p>
 
 > Atenção! Lembre-se de ter um banco de dados pré-configurado antes de testar a funcionalidade dos botões.
 
