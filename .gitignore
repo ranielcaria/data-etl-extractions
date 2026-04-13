@@ -1,3 +1,4 @@
 # --- Excluded Folders For Data Privacy ---
 __pycache__
 db_config.json
+.env
