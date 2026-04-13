@@ -89,10 +89,10 @@ transfprod = ttk.Button(
 transfprod.grid(row=2, column=1, padx=5, pady=5, sticky='ew')
 
 # Input e Exit
-inputbtn = ttk.Button(root, command=input_file, text='Insert File', style="Accent.TButton")
+inputbtn = ttk.Button(root, command=input_file, text='Inserir arquivo', style="Accent.TButton")
 inputbtn.grid(row=1, column=0, padx=(20, 10), pady=20, sticky='ew')
 
-exitbtn = ttk.Button(root, text='Exit', command=root.destroy)
+exitbtn = ttk.Button(root, text='Fechar Programa', command=root.destroy)
 exitbtn.grid(row=1, column=1, padx=(10, 20), pady=20, sticky='ew')
 
 root.mainloop()
