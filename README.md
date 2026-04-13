@@ -62,5 +62,19 @@ pip install -e .
 
 Após, você está pronto para começar a utilizar! só execute o arquivo `` main.py `` e comece!
 
-Se tudo foi feito corretamente, este menu deve aparecer ao executar o arquivo ```main.py```:
+Se tudo foi feito corretamente, este menu deve aparecer ao executar o arquivo ```main.example.py```:
 ![menu-screenshow](menu-example-screen.png)
+
+> Atenção! Lembre-se de ter um banco de dados pré-configurado antes de testar a funcionalidade dos botões.
+
+Configure uma tabela no seu banco de dados com o nome 'example' e com uma única coluna com o nome também de 'example'. Ou utilize este código sql:
+
+```sql
+CREATE SCHEMA IF NOT EXISTS "pms";
+
+CREATE TABLE IF NOT EXISTS "pms"."example" (
+	example TEXT
+);
+```
+
+Após a criação da tabela de exemplo, execute o arquivo ```main.example.py``` e pressione o botão escrito 'Exemplo'. Se um pop-up com rótulo de 'Sucesso' e com a mensagem 'ETL Concluído para example-extractor' aparecer, está tudo funcionando e você está pronto para começar a escrever seus próprios extratores de dados excel!  
