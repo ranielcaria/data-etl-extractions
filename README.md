@@ -62,4 +62,5 @@ pip install -e .
 
 Após, você está pronto para começar a utilizar! só execute o arquivo `` main.py `` e comece!
 
-
+Se tudo foi feito corretamente, este menu deve aparecer ao executar o arquivo ```main.py```:
+![menu-screenshow](menu-example-screen.png)
