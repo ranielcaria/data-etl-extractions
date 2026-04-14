@@ -14,7 +14,7 @@ class AtendimentosUpa(BaseExtractor):
         "desfecho",
         "situacao",
     ]
-    conflict = "(nome_unidade, nome_paciente, nome_profissional, data_hora, motivo)"
+    conflict = "(nome_unidade, nome_paciente, nome_profissional, data_hora)"
 
     def transform(self, df):
         registros = []
