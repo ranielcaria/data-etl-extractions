@@ -1,12 +1,15 @@
 class PostgresLoader:
-    def insert(self, conn, table, columns, rows):
+    def insert(self, conn, table, columns, rows, conflict):
         if not rows:
             return
 
         cols = ", ".join(columns)
         placeholders = ", ".join(["%s"] * len(columns))
 
-        sql = f"INSERT INTO pms.{table} ({cols}) VALUES ({placeholders})"
+        sql = f"""
+        INSERT INTO pms.{table} ({cols}) VALUES ({placeholders})
+        ON CONFLICT {conflict} DO NOTHING;
+        """
 
         values = [tuple(row[col] for col in columns) for row in rows]
 
