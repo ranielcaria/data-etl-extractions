@@ -4,6 +4,7 @@ from tkinter import ttk, messagebox
 from api.core.input import input_file
 from api.core.conn import postgres_connection
 from api.core.pipeline import ETLPipeline
+from api.core.docker_up import run_docker_up 
 from api.extractors.example_extractor import example_extractor
 
 DB_CONFIG = "db_config.json"
@@ -18,6 +19,7 @@ def run_etl(extractor_cls, name: str):
         messagebox.showerror("Erro", traceback.format_exc())
 
 root = tk.Tk()
+docker_status = tk.BooleanVar(value=False)
 root.title("MENU")
 #root.geometry('600x400')
 root.option_add("*tearOff", False)
@@ -87,11 +89,16 @@ example_button6 = ttk.Button(
 )
 example_button6.grid(row=2, column=1, padx=5, pady=5, sticky='ew')
 
-# Input e Exit
+# Input, Docker Up e Exit
+dockerbtn = ttk.Checkbutton(root, text='OFF/ON', style='Switch', 
+                            variable=docker_status,
+                            command=lambda:run_docker_up(docker_status))
+dockerbtn.grid(row=1, column=0, padx=(20), pady=(10, 0), sticky='w')
+
 inputbtn = ttk.Button(root, command=input_file, text='Inserir arquivo', style="Accent.TButton")
-inputbtn.grid(row=1, column=0, padx=(20, 10), pady=20, sticky='ew')
+inputbtn.grid(row=2, column=0, padx=(20, 10), pady=20, sticky='ew')
 
 exitbtn = ttk.Button(root, text='Fechar Programa', command=root.destroy)
-exitbtn.grid(row=1, column=1, padx=(10, 20), pady=20, sticky='ew')
+exitbtn.grid(row=2, column=1, padx=(10, 20), pady=20, sticky='ew')
 
 root.mainloop()
