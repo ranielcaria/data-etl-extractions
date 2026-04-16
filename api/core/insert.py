@@ -6,10 +6,12 @@ class PostgresLoader:
         cols = ", ".join(columns)
         placeholders = ", ".join(["%s"] * len(columns))
 
-        sql = f"""
-        INSERT INTO pms.{table} ({cols}) VALUES ({placeholders})
-        ON CONFLICT {conflict} DO NOTHING;
-        """
+        sql = f"INSERT INTO pms.{table} ({cols}) VALUES ({placeholders})"
+
+        if conflict:
+            sql += f'ON CONFLICT {conflict} DO NOTHING;'
+
+        sql += ';'
 
         values = [tuple(row[col] for col in columns) for row in rows]
 
