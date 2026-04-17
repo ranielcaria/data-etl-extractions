@@ -1,5 +1,5 @@
 # 🗁 Extrator Excel ETL
-Repositório com infraestrutura de código no design pattern formato ETL para extração de dados em excel e inserção em um banco de dados pré-pronto.
+Repositório com infraestrutura de código no design pattern formato ETL para extração de dados em excel e inserção em um banco de dados pré-pronto. 
 
 ### ⬇ Estrutura
 - **Extraction**: Extração dos dados em excel. onde acontece a extração dos seus dados que estão na planilha. 
@@ -10,9 +10,9 @@ Aqui está uma representação gráfica simples da lógica do projeto:
 
 ```mermaid
 graph TD;
-    Start[Usuário insere arquivo via GUI] --> ETL[Extração & Transformação dos Dados]
-    ETL --> Action[Clique no Botão do Relatório]
-    Action --> Pipeline{O Processo <br/>teve sucesso?}
+    Start[Usuário insere arquivo via GUI] --> Action[Clique no Botão do Relatório]
+    Action --> ETL[Extração & Transformação dos Dados]
+    ETL --> Pipeline{O Processo <br/>teve sucesso?}
     
     Pipeline -- Sim --> Success[Feedback: Mensagem de Sucesso]
     Pipeline -- Não --> Error[Feedback: Pop-up com Traceback]
@@ -39,20 +39,24 @@ graph LR;
     style E fill:#c62828,color:#fff,stroke:#b71c1c
 ```
 
-Todo o trabalho pesado de workflow de código é feito pelo pipeline. Assim, a lógica de adição de novos extratores e botões é tudo o que é necessário para aumentar o menu. Um ponto importante para se ressaltar é a distribuição dos botões que é feita em colunas e linhas utlizando um sistema de coordenadas,por isso, tome cuidado para não ter 'botões encima de botões' e acrescente a posição do botão sempre que adicionar um novo, para evitar o problema.
+Todo o trabalho pesado de workflow de código é feito pelo pipeline. Assim, a lógica de adição de novos extratores e botões é tudo o que é necessário para aumentar o menu. Um ponto importante para se ressaltar é a distribuição dos botões que é feita em colunas e linhas utlizando um sistema de coordenadas, por isso, tome cuidado para não ter 'botões encima de botões' e acrescente a posição do botão sempre que adicionar um novo, para evitar o problema.
 
 ### ⏣ Instalação
-
-Antes de prosseguir com a instalação, lembre-se de mudar o nome do arquivo ```db_config.example.json``` para somente ```db_config.json``` ou configurar seu ```.env```. Também renomeie o arquivo ```main.example.py``` para somente ```main.py``` assim que seu projeto estiver pronto. É recomendado uma interface gráfica de gerenciamento de banco de dados. Como o projeto foi feito utilizando ```psycopg2```, utilizaremos o pgAdmin como referência. Caso tenha outra preferência, faça passos equivalentes na sua GUI ou CLI de escolha.
+**Atenção ⚠** <br>
+A instalação foi pensada para sistemas linux, então, se estiver utilizando um sistema Windows, provavelmente terá que utilizar a ferramenta do ```Windows Subsystem for Linux (WSL)``` para que algumas coisas funcionem. Se tiverem sugestões de melhorias, abram um PR (Pull Request) e o pedido (e código) será analisado e se cabível, implementado. 
+Antes de prosseguir com a instalação, lembre-se de:
+- Mudar o nome do arquivo ```db_config.example.json``` para somente ```db_config.json``` ou configurar seu ```.env```. 
+- Renomeie o arquivo ```main.example.py``` para somente ```main.py``` assim que seu projeto estiver pronto. 
+- É recomendado uma interface gráfica de gerenciamento de banco de dados para facilitar a interação com o banco, como o pgAdmin por exemplo. Caso tenha outra preferência, faça passos equivalentes na sua GUI ou CLI de escolha.
 
 Se for prosseguir com o arquivo json, aqui esta uma estrutura simples para conexão. 
 
 ```json
 {
-  "host": "localhost",
+  "host": "seu_ip",
   "port": 5432,
   "database": "seu_banco",
-  "user": "postgres",
+  "user": "seu_usuario",
   "password": "sua_senha"
 }
 ```
@@ -88,9 +92,7 @@ Se tudo foi feito corretamente, este menu deve aparecer ao executar o arquivo ``
 
 Até aqui, foi passada a configuração inicial para que você começasse a desenvolver sua própria extração de dados de relatórios excel utilizando este repositório. Para que você possa utilizar seus relatórios pessoais, você _**precisará**_ criar arquivos de extração de dados que atendam ao seu relatório. Cada relatório é único e montado de uma forma diferente. Por isso, não é possível fazer um que seja universal, a menos que haja um padrão claro sendo seguido. Após este esclarecimento, seguimos.
 
-> Nota: Caso for desenvolver utilizando este projeto, não se esqueça de criar seus extratores dentro da pasta 'extractors' dentro de api/extractors.
-
-> Atenção! Lembre-se de ter um banco de dados pré-configurado antes de testar a funcionalidade dos botões. Caso não tenha, siga os passos a seguir para instalar o Docker em sua máquina. 
+> Notas: Caso for desenvolver utilizando este projeto, não se esqueça de criar seus extratores dentro da pasta 'extractors' dentro de api/extractors. E lembre-se de ter um banco de dados pré-configurado antes de testar a funcionalidade dos botões. Caso não tenha, siga os passos a seguir para instalar o Docker em sua máquina. 
 
 **RPM Based Distro**:
 ```bash
